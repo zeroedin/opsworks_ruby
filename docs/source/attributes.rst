@@ -593,6 +593,13 @@ webserver
      SSL requests are enabled. Note that SSL itself is controlled by the
      ``app['enable_ssl']`` setting in Opsworks.
 
+-  ``app['webserver']['force_ssl']``
+
+  -  **Supported values:** ``true``, ``false``
+  -  **Default** ``false``
+  -  When this parameter is set to ``true`` all requests passed to http will
+     be redirected to https, with 301 status code.
+
 -  ``app['webserver']['site_config_template']``
 
   -  **Default** ``appserver.apache2.conf.erb`` or ``appserver.nginx.conf.erb``
