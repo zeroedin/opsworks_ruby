@@ -1,0 +1,37 @@
+DEPENDENCIES
+  opsworks_ruby
+    path: .
+    metadata: true
+
+GRAPH
+  apt (6.1.4)
+  build-essential (8.2.1)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
+  logrotate (2.2.0)
+  mingw (2.1.0)
+    seven_zip (>= 0.0.0)
+  nginx (8.1.6)
+    build-essential (>= 5.0)
+    ohai (>= 4.1.0)
+    yum-epel (>= 0.0.0)
+    zypper (>= 0.0.0)
+  ohai (5.2.5)
+  opsworks_ruby (1.12.0)
+    apt (< 7.0.0)
+    logrotate (>= 0.0.0)
+    nginx (>= 0.0.0)
+    ruby-ng (>= 0.0.0)
+    s3_file (>= 0.0.0)
+    seven_zip (~> 2.0)
+    sudo (>= 0.0.0)
+  ruby-ng (0.3.0)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+  s3_file (2.8.5)
+  seven_zip (2.0.2)
+    windows (>= 1.2.2)
+  sudo (5.4.4)
+  windows (5.1.5)
+  yum-epel (3.3.0)
+  zypper (0.4.0)
