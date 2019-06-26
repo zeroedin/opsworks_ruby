@@ -18,9 +18,13 @@ module Drivers
         end
       }
 
+      def self.passenger_supported?
+        true
+      end
+
       def settings
         output = node['defaults']['webserver'].merge(node['nginx']).merge(
-          node['deploy'][app['shortname']]['webserver'] || {}
+           node['deploy'][app['shortname']]['webserver'] || {}
         ).symbolize_keys
         output[:extra_config_ssl] = output[:extra_config] if output[:extra_config_ssl] == true
         output
@@ -30,6 +34,7 @@ module Drivers
         node.default['nginx']['install_method'] = out[:build_type].to_s == 'source' ? 'source' : 'package'
         recipe = out[:build_type].to_s == 'source' ? 'source' : 'default'
         context.include_recipe("nginx::#{recipe}")
+        context.include_recipe("nginx::passenger") if passenger?
         define_service(:start)
       end
 
@@ -58,6 +63,13 @@ module Drivers
       def service_name
         'nginx'
       end
+
+      private
+
+      def appserver_site_config_template(appserver_adapter)
+        "appserver.#{adapter}.#{appserver_adapter == 'passenger' ? 'passenger.' : ''}conf.erb"
+      end
+
     end
   end
 end
